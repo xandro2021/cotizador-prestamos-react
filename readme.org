@@ -1,10 +1,59 @@
 #+title: Proyecto Introductorio React-Redux-Vite
 
 * Instalando Dependencias
+** Iniciando el proyecto
++ Se mueve al nuevo proyecto create, se instala las dependencias y se pone a correr el proyecto
 #+begin_src bash
 npm create vite@latest
+cd nombredelProyecto
 npm install
 npm run dev
+#+end_src
+** Otras Dependencias
+*** TailwindCSS (Styles)
+**** Instalacion
+#+begin_src bash
+npm i -D tailwindcss postcss autoprefixer
+#+end_src
+**** Inicializacion
++ El resultado crea dos archivos (tailwindcss.config, postcss.config)
+#+begin_src bash
+npx tailwindcss init -p
+#+end_src
+**** Archivo tailwind.config.js
++ Se modifica content para indicar donde se encuentran los archivos con estilos de tailwind en el proyecto
+#+begin_src js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+#+end_src
+**** Archivo /src/index.css
++ Se incluyen referencias de tailwindcss
+#+begin_src css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#+end_src
+**** Regla styles de React
++ Al agregar una clase de tailwind de estilos para verificar su funcionamiento desde un componente como App.jsx se debe agregar Name a la palabra reservada de html para class, creadon asi className debido a que la palabra class en si ya es reservada para javascript y genera conflictos
+#+begin_src rjsx
+function App() {
+
+  return (
+    <h1 className="text-6xl">Hola Mundo</h1>
+  )
+}
+
+export default App
+
 #+end_src
 
 * Carpetas creadas
