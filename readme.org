@@ -81,3 +81,16 @@ export default App
 #+end_src
 *** main.jsx
 + Es el archivo principal, se encarga de importar react, montarlo en el html y de agregar todos los componentes. Archivo mas importante en react
+#+begin_src js
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+
+#+end_src
