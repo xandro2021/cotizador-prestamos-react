@@ -44,7 +44,7 @@ export default {
 #+end_src
 **** Regla styles de React
 + Al agregar una clase de tailwind de estilos para verificar su funcionamiento desde un componente como App.jsx se debe agregar Name a la palabra reservada de html para class, creadon asi className debido a que la palabra class en si ya es reservada para javascript y genera conflictos
-#+begin_src rjsx
+#+begin_src js
 function App() {
 
   return (
