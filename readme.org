@@ -69,7 +69,7 @@ export default App
 *** App.jsx
 + Se ha eliminado gran parte del default para solo dejar
 + App.jsx es un componente, los cuales son funciones que se empiezan su nombre en mayuscula por regla general
-#+begin_src rjsx
+#+begin_src js
 function App() {
 
   return (
