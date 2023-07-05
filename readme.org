@@ -94,3 +94,82 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 
 #+end_src
+
+* Nota Snippets Doom Emacs
++ En Vscode hay muchas extensiones que ya traen snippets de react, pero en doom emacs al parecer hay que empezar a crear nuestros propios snippets, un recordario de como se hace
+** DoomEmacs
+1) Alt + x
+2) yas-new-snippet
+3) Write the snippet like in this example:
+#+begin_src
+# key: mq
+# name: @media
+# --
+@media ( ${1:min}-width: ${2} ){
+    `%`$0
+}
+#+end_src
+
+* State
++ Es la fuente de la verdad (source of truth) de tu app
++ Un listado de clientes, un carrito de compras lleno o vacio, un usuario autenticado, es lo que determina cual es el estado o state de tu app
++ Para definir el state en react, se importa useState y la funcion al momento de utilizarse nos retorna 2 valores: state y la funcion que modifica el state
+** Administrar State
++ useState es recomendado para pequeños proyectos en React
++ el State no debe modificarse directamente; para eso se utiliza la funcion que lo modifica
++ Para proyectos grandes se recomiendo administrar el state con un state global como Context, Zustand, Recoil o Redux
+
+** Ejemplo Basico del state
+#+begin_src js
+function App() {
+
+  // Defino el state
+  const [cantidad, setCantidad] = useState(10000);
+  console.log(cantidad);
+  // para modificar el state se usa la funcion setCantidad
+
+  return (
+    <div className="my-20 max-w-lg mx-auto bg-white shadow p-10">
+
+      <Header/>
+
+      <input
+        type="range"
+        className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600"
+      />
+
+    </div>
+  )
+}
+#+end_src
+
+** Eventos
++ Todas las aplicaciones requieren eventos: cuando un usuario escribe en un campo, realiza un submit del formulario, click en un elemento
++ En react los eventos inician con la palabra "on" seguido del nombre del evento en mayuscula: onClick, onSubmit, onChange
++ Los eventos son agregados via atributo en el codigo html
++ Por convencion a la funcion encargada de manejar el evento inicia con la palabra handle seguido del nombre del evento, en este caso seria handleChange
+#+begin_src js
+function App() {
+
+  const [cantidad, setCantidad] = useState(10000);
+
+  function handleChange(e) {
+    console.log(Number(e.target.value))
+  }
+
+  return (
+    <div className="my-20 max-w-lg mx-auto bg-white shadow p-10">
+
+      <Header/>
+
+      <input
+        type="range"
+        className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600"
+        onChange={handleChange}
+      />
+
+    </div>
+  )
+}
+
+#+end_src
