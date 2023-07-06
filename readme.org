@@ -173,3 +173,14 @@ function App() {
 }
 
 #+end_src
+* useEffect
++ Es un hook que se ejecuta una vez que el componente este listo, y toma un array de dependencias
++ En dicho arreglo se le puede pasar un state de manera que este a la escucha de los cambios que ejecutan en el state, en caso de que el state se actualice, este useState se ejecuta nuevamente
++ Es recomendable siempre crear varios useEffect en vez de crear un solo useEffect muy grande que requiere muchos parametros en el arreglo. Lo ideal serian maximo 2 parametros en el arreglo
+#+begin_src js
+// Cada vez que cantidad cambie, este useEffect se va a ejecutar. Se ejecuta al menos una vez
+useEffect(() => {
+    const resultadoTotalPagar = calcularTotalPagar(cantidad, meses);
+    setTotal(resultadoTotalPagar);
+}, [cantidad, meses]);
+#+end_src
